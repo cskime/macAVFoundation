@@ -5,6 +5,9 @@
 //  Created by chamsol kim on 17/07/2019.
 //  Copyright © 2019 chamsol kim. All rights reserved.
 //
+//  AVFoundation Session Operation
+
+
 
 import Cocoa
 import AVFoundation

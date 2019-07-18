@@ -710,7 +710,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DpV-Vu-anH">
-                                <rect key="frame" x="14" y="222" width="89" height="32"/>
+                                <rect key="frame" x="14" y="222" width="102" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="SZH-oM-AO4"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Capture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UnB-sJ-sJG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -719,12 +722,30 @@
                                     <action selector="capture:" target="XfG-lQ-9wD" id="lU6-By-vAk"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="41c-3V-mgy">
+                                <rect key="frame" x="364" y="222" width="102" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="NzI-TO-r11"/>
+                                </constraints>
+                                <buttonCell key="cell" type="push" title="Start" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Diw-mU-E6g">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="run:" target="XfG-lQ-9wD" id="P1A-wG-Brm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="41c-3V-mgy" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="2bi-S5-zyz"/>
                             <constraint firstItem="DpV-Vu-anH" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="6Ta-LN-ybe"/>
+                            <constraint firstAttribute="trailing" secondItem="41c-3V-mgy" secondAttribute="trailing" constant="20" id="NWZ-5e-QuP"/>
                             <constraint firstItem="DpV-Vu-anH" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" id="ddF-uP-zZh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="captureButton" destination="DpV-Vu-anH" id="qQs-gJ-Nh7"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

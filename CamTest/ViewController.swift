@@ -18,6 +18,8 @@ class ViewController: NSViewController {
     var videoInput: SessionInput!
     var imageOutput: SessionImageOutput!
     
+    @IBOutlet weak var captureButton: NSButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,7 +35,7 @@ class ViewController: NSViewController {
             camSession.configureSessionOutput(output: imageOutput.getImageOutput(), preset: .photo)
         }
         
-        camSession.startSession()
+        captureButton.isEnabled = false
     }
     
     override func viewWillLayout() {
@@ -46,6 +48,19 @@ class ViewController: NSViewController {
             imageOutput.capturePNGImage(path: urlPath)
         }
     }
+    
+    @IBAction func run(_ sender: NSButton) {
+        if sender.title.elementsEqual("Start") {
+            camSession.startSession()
+            sender.title = "Stop"
+            captureButton.isEnabled = true
+        } else {
+            camSession.stopSession()
+            sender.title = "Start"
+            captureButton.isEnabled = false
+        }
+    }
+    
 }
 
 
