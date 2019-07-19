@@ -79,6 +79,7 @@ class SessionController {
         guard session.canAddInput(input) else {
             sessionSetup = .configurationFailed
             session.commitConfiguration()
+            NSLog("The input cannot be added")
             return
         }
         session.addInput(input)
@@ -98,6 +99,7 @@ class SessionController {
         guard session.canAddOutput(output) else {
             sessionSetup = .configurationFailed
             session.commitConfiguration()
+            NSLog("The output cannot be added")
             return
         }
         
@@ -152,6 +154,8 @@ class SessionImageOutput {
     private let imageOutput = AVCaptureStillImageOutput()
     
     init() {
+        // Apple Document - pidxe format type
+        // https://developer.apple.com/documentation/corevideo/kcvpixelformattype_32bgra
         imageOutput.outputSettings = [kCVPixelBufferPixelFormatTypeKey as String:kCVPixelFormatType_32BGRA];
     }
     
@@ -212,8 +216,10 @@ extension NSImage {
         return bitmapImage.representation(using: .png, properties: [:])
     }
     
+    // File save on macOS with swift
     // Only url using Filemanager.default verified
     // Can't write at "Desktop" folder or other path because have not permission
+    // https://stackoverflow.com/questions/39925248/swift-on-macos-how-to-save-nsimage-to-disk
     func pngWrite(to url: URL, options: Data.WritingOptions = .atomic) -> Bool {
         do {
             try pngData?.write(to: url, options: options)
