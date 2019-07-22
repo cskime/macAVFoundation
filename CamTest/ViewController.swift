@@ -28,11 +28,10 @@ class ViewController: NSViewController {
         videoInput = SessionInput(for: .video)
         imageOutput = SessionImageOutput()
         
-        camSession.setPreviewLayer(at: self.view)
-        
         if let input = videoInput.createDefaultDeviceInput() {
             camSession.configureSessionInput(input: input)
             camSession.configureSessionOutput(output: imageOutput.getImageOutput(), preset: .photo)
+            camSession.setPreviewLayer(at: self.view)
         }
         
         captureButton.isEnabled = false
@@ -45,6 +44,7 @@ class ViewController: NSViewController {
     
     @IBAction func capture(_ sender: Any) {
         if let urlPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("my-image.png") {
+            NSLog("Capture path : \(urlPath.path)")
             imageOutput.capturePNGImage(path: urlPath)
         }
     }

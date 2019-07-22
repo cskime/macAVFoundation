@@ -114,6 +114,12 @@ class SessionController {
         }
         previewLayer.session = session
         previewLayer.videoGravity = .resizeAspectFill
+        if let connect = previewLayer.connection, connect.isVideoMirroringSupported {
+            connect.automaticallyAdjustsVideoMirroring = false
+            connect.isVideoMirrored = true
+        } else {
+            NSLog("Can't filp mirrored video of preview layer because not connected. Set preview layer after session input and output is connected.")
+        }
         previewLayer.frame = view.bounds
         view.layer?.addSublayer(previewLayer)
     }
@@ -167,6 +173,9 @@ class SessionImageOutput {
         let connection = imageOutput.connections.filter {
             return $0.inputPorts[0].mediaType == .video
         }[0]
+        
+        // flip mirrored image
+        connection.isVideoMirrored = true
         
         imageOutput.captureStillImageAsynchronously(from: connection) { (imageSampleBuffer: CMSampleBuffer?, error: Error?) in
             if let image = imageSampleBuffer?.convertToNSImage()
