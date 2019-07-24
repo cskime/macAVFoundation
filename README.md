@@ -3,10 +3,10 @@ skt 과제 중 맥북 카메라를 사용해서 사람 얼굴을 캡쳐하는 �
 - ([AVFoundation Document](https://developer.apple.com/documentation/avfoundation/cameras_and_media_capture)).
 
 ## 주로 사용되는 클래스
-- AVCaptureSession : capture activity와 input device에서 output으로의 데이터 흐름을 관리하는 주요 객체입니다.
-- AVCaptureDevice : `AVCaptureSession`에 입력되는 오디오, 비디오 등 장치. 하드웨어 캡쳐 관련 기능을 컨트롤하는 객체. `mediaType`에 따라 비디오/오디오 장치에 각각 접근할 수 있습니다.
-- AVCaptureDeviceInput : `AVCaptureSession`에 input data로 제공되는 객체입니다. `AVCaptureDevice`를 먼저 찾은 후에 input으로 만듭니다.
-- AVCaptureStillImageOutput : `AVCaptureSession`에서 기록된 media를 이미지로 출력하는 객체입니다. 출력 형식에 따라 `AVCaptureOutput`의 subclass를 다르게 사용할 수 있습니다.
+- `AVCaptureSession` : capture activity와 input device에서 output으로의 데이터 흐름을 관리하는 주요 객체입니다.
+- `AVCaptureDevice` : `AVCaptureSession`에 입력되는 오디오, 비디오 등 장치. 하드웨어 캡쳐 관련 기능을 컨트롤하는 객체. `mediaType`에 따라 비디오/오디오 장치에 각각 접근할 수 있습니다.
+- `AVCaptureDeviceInput` : `AVCaptureSession`에 input data로 제공되는 객체입니다. `AVCaptureDevice`를 먼저 찾은 후에 input으로 만듭니다.
+- `AVCaptureStillImageOutput` : `AVCaptureSession`에서 기록된 media를 이미지로 출력하는 객체입니다. 출력 형식에 따라 `AVCaptureOutput`의 subclass를 다르게 사용할 수 있습니다.
 
 ## Sample Project Description
 ## 프로젝트 설정
